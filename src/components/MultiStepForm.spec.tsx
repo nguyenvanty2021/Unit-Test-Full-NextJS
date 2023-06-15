@@ -49,15 +49,12 @@ describe('MultiStepForm', () => {
     user.type(getCity(), 'Vila Real');
     user.click(getMillionaireCheckbox());
     clickNextButton();
-
     // 2nd step
     user.type(await findMoney(), '1000000');
     clickNextButton();
-
     // 3rd step
     user.type(await findDescription(), 'hello');
     clickSubmitButton();
-
     await waitFor(() => {
       // form data
       expect(onSubmit).toHaveBeenCalledWith({
@@ -71,7 +68,6 @@ describe('MultiStepForm', () => {
     });
     expect(onSubmit).toHaveBeenCalledTimes(1);
   });
-
   it('has 3 required fields on first step', async () => {
     clickNextButton();
     await waitFor(() => {
